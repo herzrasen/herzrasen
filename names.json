@@ -1,0 +1,59 @@
+{
+  "firstNames": {
+    "male": [
+      "Adrian",
+      "Alex",
+      "Alessandro",
+      "Alexander",
+      "Anton",
+      "Aram",
+      "Bastian",
+      "Ben",
+      "Benni",
+      "Benjamin",
+      "Bruno",
+      "Can",
+      "Christian",
+      "Dembe",
+      "Dennis",
+      "Emil",
+      "Frank",
+      "Mehmet",
+      "Mads",
+      "Mats",
+      "Omid",
+      "Rob",
+      "Robert",
+      "Sebastian"
+    ],
+    "female": [
+      "Jessica"
+    ]
+  },
+  "lastNames": {
+    "common": [
+      "Alonso",
+      "Bach",
+      "Bachmeier",
+      "Becker",
+      "Brahms",
+      "Engels",
+      "Gonzalez",
+      "Jung",
+      "Jungheinrich",
+      "King",
+      "König",
+      "Meier",
+      "Meyer",
+      "Müller",
+      "Nguyen",
+      "Rivera",
+      "Sanchez",
+      "Schmidt",
+      "Smith",
+      "Streich",
+      "Wang",
+      "Young"
+    ]
+  }
+}
