@@ -20,22 +20,23 @@ const (
 )
 
 type Booking struct {
-	Player  *player.Player
-	Warning bool
-	Card    *Card
+	PlayerId string `json:"playerId"`
+	Warning  bool   `json:"warning"`
+	Card     *Card  `json:"card"`
 }
 
 type Substitution struct {
-	SubbedOffPlayerId string
-	BroughtOnPlayerId string
-	Second            uint32
+	SubbedOffPlayerId string `json:"subbedOffPlayerId"`
+	BroughtOnPlayerId string `json:"broughtOnPlayerId"`
+	Second            uint32 `json:"second"`
 }
 
 type Team struct {
-	ActivePlayers []ActivePlayer   `json:"activePlayers"`
-	Squad         []*player.Player `json:"squad"`
-	Substitutions []Substitution   `json:"substitutions"`
-	Bookings      []Booking        `json:"bookings"`
+	Id            string          `json:"id"`
+	ActivePlayers []ActivePlayer  `json:"activePlayers"`
+	Squad         []player.Player `json:"squad"`
+	Substitutions []Substitution  `json:"substitutions"`
+	Bookings      []Booking       `json:"bookings"`
 	// substitutionRules, ...
 }
 

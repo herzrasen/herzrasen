@@ -5,14 +5,17 @@ import (
 	"os"
 )
 
+type FirstNames struct {
+	Male   []string `json:"male"`
+	Female []string `json:"female"`
+}
+type LastNames struct {
+	Common []string `json:"common"`
+}
+
 type NameConfig struct {
-	FirstNames struct {
-		Male   []string `json:"male"`
-		Female []string `json:"female"`
-	} `json:"firstNames"`
-	LastNames struct {
-		Common []string `json:"common"`
-	} `json:"lastNames"`
+	FirstNames FirstNames `json:"firstNames"`
+	LastNames  LastNames  `json:"lastNames"`
 }
 
 func FromFile(path string) (*NameConfig, error) {
