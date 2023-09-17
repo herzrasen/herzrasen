@@ -1,5 +1,5 @@
 {
-  "firstNames": {
+  "firstnames": {
     "male": [
       "Adrian",
       "Alex",
@@ -30,7 +30,7 @@
       "Jessica"
     ]
   },
-  "lastNames": {
+  "lastnames": {
     "common": [
       "Alonso",
       "Bach",

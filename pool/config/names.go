@@ -5,17 +5,17 @@ import (
 	"os"
 )
 
-type FirstNames struct {
+type Firstnames struct {
 	Male   []string `json:"male"`
 	Female []string `json:"female"`
 }
-type LastNames struct {
+type Lastnames struct {
 	Common []string `json:"common"`
 }
 
 type NameConfig struct {
-	FirstNames FirstNames `json:"firstNames"`
-	LastNames  LastNames  `json:"lastNames"`
+	Firstnames Firstnames `json:"firstnames"`
+	Lastnames  Lastnames  `json:"lastnames"`
 }
 
 func FromFile(path string) (*NameConfig, error) {
@@ -23,8 +23,12 @@ func FromFile(path string) (*NameConfig, error) {
 	if err != nil {
 		return nil, err
 	}
+	return FromBytes(data)
+}
+
+func FromBytes(data []byte) (*NameConfig, error) {
 	var cfg NameConfig
-	err = json.Unmarshal(data, &cfg)
+	err := json.Unmarshal(data, &cfg)
 	if err != nil {
 		return nil, err
 	}

@@ -17,8 +17,12 @@ var args struct {
 	Gender         string  `arg:"-g,--gender" default:"male"`
 	MinAttrValue   float32 `arg:"--min-attr-value" default:"0.0"`
 	MaxAttrValue   float32 `arg:"--max-attr-value" default:"5.0"`
-	MinYearOfBirth int     `arg:"--min-year-of-birth" default:"2000"`
-	MaxYearOfBirth int     `arg:"--max-year-of-birth" default:"2006"`
+	MinYearOfBirth uint32  `arg:"--min-year-of-birth" default:"2000"`
+	MaxYearOfBirth uint32  `arg:"--max-year-of-birth" default:"2006"`
+	MinHeight      uint32  `arg:"--min-height" default:"160"`
+	MaxHeight      uint32  `arg:"--max-height" default:"200"`
+	MinWeight      uint32  `arg:"--min-height" default:"55000"`
+	MaxWeight      uint32  `arg:"--max-height" default:"100000"`
 	NameConfig     string  `arg:"--name-config" default:"names.json"`
 	OutputFile     string  `arg:"-o,--output-file"`
 }
@@ -32,10 +36,18 @@ func main() {
 	r := random.Random{
 		Gender:     gender.FromString(args.Gender),
 		NameConfig: nameConfig,
+		MinYear:    args.MinYearOfBirth,
+		MaxYear:    args.MaxYearOfBirth,
+		MinHeight:  args.MinHeight,
+		MaxHeight:  args.MaxHeight,
+		MinWeight:  args.MinWeight,
+		MaxWeight:  args.MaxWeight,
+		MinAttr:    args.MinAttrValue,
+		MaxAttr:    args.MaxAttrValue,
 	}
-	var players []*player.Player
+	var players []player.Player
 	for i := 0; i < args.Num; i++ {
-		p := r.NewPlayer(args.MinAttrValue, args.MaxAttrValue, args.MinYearOfBirth, args.MaxYearOfBirth)
+		p := r.Player()
 		players = append(players, p)
 	}
 	var out bytes.Buffer

@@ -1,16 +1,9 @@
 package player
 
-import (
-	"github.com/herzrasen/common/gender"
-	"time"
-)
+import "github.com/herzrasen/common/person"
 
 type Player struct {
-	Id             string         `json:"id"`
-	FirstName      string         `json:"firstName"`
-	LastName       string         `json:"lastName"`
-	Gender         gender.Gender  `json:"gender"`
-	DateOfBirth    time.Time      `json:"dateOfBirth"`
+	person.Person
 	TechnicalAttrs TechnicalAttrs `json:"technicalAttrs"`
 	PhysicalAttrs  PhysicalAttrs  `json:"physicalAttrs"`
 	MentalAttrs    MentalAttrs    `json:"mentalAttrs"`

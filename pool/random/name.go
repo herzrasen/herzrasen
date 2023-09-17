@@ -5,19 +5,19 @@ import (
 	"math/rand"
 )
 
-func (r *Random) FirstName() string {
+func (r *Random) Firstname() string {
 	switch r.Gender {
 	case gender.Male:
-		idx := rand.Intn(len(r.NameConfig.FirstNames.Male))
-		return r.NameConfig.FirstNames.Male[idx]
+		idx := rand.Intn(len(r.NameConfig.Firstnames.Male))
+		return r.NameConfig.Firstnames.Male[idx]
 	case gender.Female:
-		idx := rand.Intn(len(r.NameConfig.FirstNames.Female))
-		return r.NameConfig.FirstNames.Female[idx]
+		idx := rand.Intn(len(r.NameConfig.Firstnames.Female))
+		return r.NameConfig.Firstnames.Female[idx]
 	}
 	return ""
 }
 
-func (r *Random) LastName() string {
-	idx := rand.Intn(len(r.NameConfig.LastNames.Common))
-	return r.NameConfig.LastNames.Common[idx]
+func (r *Random) Lastname() string {
+	idx := rand.Intn(len(r.NameConfig.Lastnames.Common))
+	return r.NameConfig.Lastnames.Common[idx]
 }

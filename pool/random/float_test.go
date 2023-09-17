@@ -1,16 +1,12 @@
 package random
 
 import (
-	"fmt"
-	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
 func TestFloatInRange(t *testing.T) {
-	r := Random{}
-	for i := 0; i < 5000; i++ {
-		f := r.FloatInRange(10, 20)
-		assert.True(t, f >= 10, fmt.Sprintf("%f is not >= 10", f))
-		assert.True(t, f <= 20, fmt.Sprintf("%f is not < 20", f))
-	}
+	r := Random{minFloat: 1, maxFloat: 5}
+	AssertRandom(t, 1000, r.Float, func(a float32) bool {
+		return a >= 1 && a <= 5
+	})
 }

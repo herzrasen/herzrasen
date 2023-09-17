@@ -2,13 +2,17 @@ package team
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/herzrasen/common/player"
+	"github.com/herzrasen/engine/point"
 	"os"
 )
 
-type ActivePlayer struct {
-	Position Position `json:"position"`
-	PlayerId string   `json:"playerId"`
+type Position struct {
+	BasePosition BasePosition  `json:"basePosition"`
+	Location     point.Point   `json:"location"`
+	Instructions []Instruction `json:"instructions"`
+	PlayerId     string        `json:"playerId"`
 }
 
 type Card uint8
@@ -33,8 +37,9 @@ type Substitution struct {
 
 type Team struct {
 	Id            string          `json:"id"`
-	ActivePlayers []ActivePlayer  `json:"activePlayers"`
-	Squad         []player.Player `json:"squad"`
+	Positions     []Position      `json:"positions"`
+	Players       []player.Player `json:"players"`
+	Substitutes   []player.Player `json:"substitutes"`
 	Substitutions []Substitution  `json:"substitutions"`
 	Bookings      []Booking       `json:"bookings"`
 	// substitutionRules, ...
@@ -51,4 +56,13 @@ func FromFile(teamFile string) (*Team, error) {
 		return nil, err
 	}
 	return &team, nil
+}
+
+func (t *Team) PositionForPlayer(player *player.Player) (Position, error) {
+	for _, pos := range t.Positions {
+		if pos.PlayerId == player.Id {
+			return pos, nil
+		}
+	}
+	return Position{}, fmt.Errorf("no player with id %s found in team %s", player.Id, t.Id)
 }
